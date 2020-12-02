@@ -1,0 +1,16 @@
+Roman Numerals
+
+It is quite simple. Change an Arabic number to a combination of letters from the Latin alphabet.
+
+Symbols:
+I   1
+V   5
+X   10
+L   50
+C   100
+D   500
+M   1000
+
+Usage:
+roman.fromNumber(1234) should give MCCXXXIV.
+There are some numbers which are not allowed, ex.: negative numbers and numbers greater than 3999.

@@ -1,0 +1,11 @@
+{
+  "name": "romannumerals",
+  "version": "1.0.0",
+  "description": "Roman Numerals",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Adam Paulukanis",
+  "license": "ISC"
+}
