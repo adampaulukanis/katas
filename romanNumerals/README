@@ -14,3 +14,5 @@ M   1000
 Usage:
 roman.fromNumber(1234) should give MCCXXXIV.
 There are some numbers which are not allowed, ex.: negative numbers and numbers greater than 3999.
+
+This version is the first one I coded. There are other ideas I thinks I could explore, like recursion.
