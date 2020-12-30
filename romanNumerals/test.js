@@ -20,6 +20,7 @@ assert(roman.fromNumber(30) === 'XXX');
 assert(roman.fromNumber(40) === 'XL');
 assert(roman.fromNumber(50) === 'L');
 assert(roman.fromNumber(60) === 'LX');
+assert(roman.fromNumber(66) === 'LXVI');
 assert(roman.fromNumber(70) === 'LXX');
 assert(roman.fromNumber(80) === 'LXXX');
 assert(roman.fromNumber(90) === 'XC');
@@ -31,6 +32,7 @@ assert(roman.fromNumber(400) === 'CD');
 assert(roman.fromNumber(500) === 'D');
 assert(roman.fromNumber(600) === 'DC');
 assert(roman.fromNumber(700) === 'DCC');
+assert(roman.fromNumber(792) === 'DCCXCII');
 assert(roman.fromNumber(800) === 'DCCC');
 assert(roman.fromNumber(900) === 'CM');
 
