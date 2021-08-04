@@ -1,0 +1,11 @@
+{
+  "name": "number-of-islands",
+  "version": "0.0.1",
+  "description": "Count the number of islands",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
