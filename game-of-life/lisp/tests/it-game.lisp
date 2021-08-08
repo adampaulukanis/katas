@@ -18,8 +18,44 @@
                                  #(0 0 0)
                                  #(0 0 0)))
 
+(defparameter *grid2* #(#(0 0 1)
+                        #(0 1 1)
+                        #(0 0 0)))
+(defparameter *grid2-expected* #(#(0 1 1)
+                                 #(0 1 1)
+                                 #(0 0 0)))
+
+(defparameter *grid3* #(#(0 0 0)
+                        #(0 1 1)
+                        #(1 1 1)))
+(defparameter *grid3-expected* #(#(0 0 0)
+                                 #(1 0 1)
+                                 #(1 0 1)))
+
+(defparameter *grid4* #(#(0 0 1)
+                        #(0 0 1)
+                        #(0 0 1)))
+(defparameter *grid4-expected* #(#(0 0 0)
+                                 #(0 1 1)
+                                 #(0 0 0)))
+
 (test sc1
   "Scenario 1"
   (is (equalp  (game:next-gen *grid1*) *grid1-expected* )))
 
+(test sc2
+  "Scenario 2"
+  (is (equalp  (game:next-gen *grid2*) *grid2-expected* )))
+
+(test sc3
+  "Scenario 3"
+  (is (equalp  (game:next-gen *grid3*) *grid3-expected* )))
+
+(test sc4
+  "Scenario 4"
+  (is (equalp  (game:next-gen *grid4*) *grid4-expected* )))
+
 (run! 'sc1)
+(run! 'sc2)
+(run! 'sc3)
+(run! 'sc4)

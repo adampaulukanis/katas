@@ -40,8 +40,6 @@
               (is (equalp (game:next-gen *testgrid*) *testgrid-expected*))
 
               (is (= (length (invocations 'rules:alivep)) 9))
-              (is (= (length (invocations 'grid:neighbour-count)) 9))
-              )
-  )
+              (is (= (length (invocations 'grid:neighbour-count)) 9))))
 
 (run! 'next-gen-tests)
