@@ -4,12 +4,12 @@
 
 (in-package #:katas/multiple-of-3-or-5)
 
-(defun three-or-five (number)
+(defun three-or-five-p (number)
   (or (= 0 (mod number 3)) (= 0 (mod number 5))))
 
 (defun solution (number)
   (loop for x from 1 below number
-        if (three-or-five x)
+        if (three-or-five-p x)
         sum x))
 
 
