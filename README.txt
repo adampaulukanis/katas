@@ -6,3 +6,4 @@ My katas
 4. Game of Life
 5. Sum of Multiple of 3 or 5
 6. Sort the Odd
+7. Sum from A to B
