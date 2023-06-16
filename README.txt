@@ -7,3 +7,4 @@ My katas
 5. Sum of Multiple of 3 or 5
 6. Sort the Odd
 7. Sum from A to B
+8. Test if all characters in a string are unique
