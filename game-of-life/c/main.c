@@ -5,10 +5,10 @@
 #include <time.h>
 #include <assert.h>
 
-#define WIDTH            25
-#define HEIGHT           25
-#define SPEED           250
-#define STEPS           100
+#define WIDTH           100
+#define HEIGHT          100
+#define SPEED             2
+#define STEPS          1000
 
 typedef enum {
     DEAD,
@@ -34,8 +34,8 @@ State gol[2][9] = {
 
 void init_grid()
 {
-    for (size_t y = 0; y < HEIGHT / 2; ++y) {
-        for (size_t x = 0; x < WIDTH / 2; ++x) {
+    for (size_t y = 0; y < HEIGHT; ++y) {
+        for (size_t x = 0; x < WIDTH; ++x) {
             grid[y][x].state = DEAD;
             if (rand() % 2 == 0) {
                 grid[y][x].state = ALIVE;
@@ -44,13 +44,35 @@ void init_grid()
     }
 }
 
-void init_glider(size_t offset)
+void init_glider(size_t offsetX, size_t offsetY)
 {
-    grid[3 + offset - 1][3 + offset + 1].state = ALIVE;
-    grid[3 + offset    ][3 + offset - 1].state = ALIVE;
-    grid[3 + offset    ][3 + offset + 1].state = ALIVE;
-    grid[3 + offset + 1][3 + offset + 1].state = ALIVE;
-    grid[3 + offset + 1][3 + offset    ].state = ALIVE;
+    grid[offsetY - 1][offsetX + 1].state = ALIVE;
+    grid[offsetY    ][offsetX - 1].state = ALIVE;
+    grid[offsetY    ][offsetX + 1].state = ALIVE;
+    grid[offsetY + 1][offsetX + 1].state = ALIVE;
+    grid[offsetY + 1][offsetX    ].state = ALIVE;
+}
+
+void init_spaceship(size_t offsetX, size_t offsetY)
+{
+    grid[offsetY - 1][offsetX - 1].state = ALIVE;
+    grid[offsetY - 1][offsetX + 2].state = ALIVE;
+    grid[offsetY    ][offsetX - 2].state = ALIVE;
+    grid[offsetY + 1][offsetX - 2].state = ALIVE;
+    grid[offsetY + 1][offsetX + 2].state = ALIVE;
+    grid[offsetY + 2][offsetX + 1].state = ALIVE;
+    grid[offsetY + 2][offsetX + 0].state = ALIVE;
+    grid[offsetY + 2][offsetX - 1].state = ALIVE;
+    grid[offsetY + 2][offsetX - 2].state = ALIVE;
+}
+
+void init_f(size_t offsetX, size_t offsetY)
+{
+    grid[offsetY - 1][offsetX + 0].state = ALIVE;
+    grid[offsetY - 1][offsetX + 1].state = ALIVE;
+    grid[offsetY    ][offsetX - 1].state = ALIVE;
+    grid[offsetY    ][offsetX    ].state = ALIVE;
+    grid[offsetY + 1][offsetX    ].state = ALIVE;
 }
 
 void print_grid()
@@ -59,9 +81,9 @@ void print_grid()
     for (size_t y = 0; y < HEIGHT; ++y) {
         for (size_t x = 0; x < WIDTH; ++x) {
             if (grid[y][x].state == ALIVE) {
-                printf("o");
+                printf("X");
             } else {
-                printf("-");
+                printf(" ");
             }
         }
         printf("\n");
@@ -89,7 +111,7 @@ size_t count_neighbours(size_t x, size_t y) {
     return sum;
 }
 
-void play_grid()
+void next_gen()
 {
     for (size_t y = 0; y < HEIGHT; ++y) {
         for (size_t x = 0; x < WIDTH; ++x) {
@@ -114,15 +136,22 @@ int main(int argc, char **argv)
     (void)argv;
     srand(time(NULL));
     system("clear");
-    init_grid();
-    init_glider(-1);
+    //init_grid();
+    init_glider(4, 3);
+    init_glider(10, 8);
+    init_f(50, 50);
+    init_spaceship(WIDTH - 10, HEIGHT / 2);
     print_grid(); 
 
     for (size_t i = 0; i < STEPS; ++i) {
+        if (i % 47 == 0) {
+            init_spaceship(WIDTH - 10, HEIGHT - 50);
+        }
+        //system("clear");
+        next_gen();
         print_grid(); 
-        usleep(SPEED * 1000);
-        play_grid();
-        system("clear");
+        printf("%zu / %d\n", i, STEPS);
+        //usleep(SPEED * 100000);
     }
 
     return EXIT_SUCCESS;
