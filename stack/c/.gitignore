@@ -1,2 +1,4 @@
+*.o
+main
 stack
-stack.o
+test1
