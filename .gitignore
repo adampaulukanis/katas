@@ -1,3 +1,4 @@
-node_modules
+*.core
 *.fasl
+node_modules
 tags*
