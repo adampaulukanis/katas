@@ -1,14 +1,14 @@
 CC = clang
 CFLAGS = -g -Wall
 
-all: test1 stack.o
+all: tests stack.o
 
 stack.o: stack.c stack.h
 	$(CC) $(CFLAGS) -c stack.c
 
 clean:
 	rm -f *.o stack.o
-	rm -f test1 test1.core
+	rm -f tests tests.core
 
-test1: test1.c stack.o
-	$(CC) $(CFLAGS) test1.c stack.o -o test1
+tests: tests.c stack.o
+	$(CC) $(CFLAGS) tests.c stack.o -o tests
