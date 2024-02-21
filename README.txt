@@ -9,3 +9,5 @@ My katas
 7. Sum from A to B
 8. Test if all characters in a string are unique
 9. Get the Middle Character
+10. Sudoku solver
+11. stack
