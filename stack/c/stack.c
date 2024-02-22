@@ -1,20 +1,22 @@
-#include "stack.h" /* Include there everything */
+#include "stack.h" /* Includes go there */
 
 retval Stack_push(Stack * stack, retval element)
 {
     if (stack->top == MAXSIZE) {
-        assert(false && "stack overflow");
+        fprintf(stderr, "Error: stack overflow");
+        return -1; /* error */
     } else {
         stack->items[stack->top] = element;
         stack->top++;
+        return element;
     }
-    return element;
 }
 
 retval Stack_pop(Stack * stack)
 {
     if (stack->top == 0) {
-        assert(false && "stack underflow");
+        fprintf(stderr, "Error: stack underflow");
+        return -1; /* error */
     } else {
         stack->top--;
         return stack->items[stack->top];
