@@ -5,7 +5,7 @@
 
 const size_t WIDTH = 9;
 
-size_t grid[WIDTH * WIDTH];
+size_t grid[WIDTH * WIDTH] = { 0 };
 
 void print_grid(void)
 {
